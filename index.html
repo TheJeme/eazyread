@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <title>EazyRead</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="title">
+      <h1 class="title-text-1">EAZY</h1>
+      <h1 class="title-text-2">READ</h1>
+    </div>
+    <div class="main" id="generate">
+      <textarea id="textarea" placeholder="Enter text."></textarea>
+      <button id="generate-button">Generate</button>
+    </div>
+    <div class="main" id="target">
+      <button id="target-button">Back</button>
+      <div id="target-text"></div>
+    </div>
+  </body>
+
+  <script>
+    const textarea = document.getElementById("textarea");
+    const generateButton = document.getElementById("generate-button");
+    const targetButton = document.getElementById("target-button");
+    const generateDiv = document.getElementById("generate");
+    const targetDiv = document.getElementById("target");
+    const targetText = document.getElementById("target-text");
+
+    generateButton.addEventListener("click", () => {
+      if (textarea.value === "") {
+        return;
+      }
+
+      const words = textarea.value.split(" ");
+
+      const node = document.createElement("p");
+
+      const newWords = words.forEach((word) => {
+        asd = Math.ceil(word.length / 3);
+        const element = document.createElement("span");
+        element.innerHTML =
+          "<b>" + word.slice(0, asd) + "</b>" + word.slice(asd) + " ";
+        node.appendChild(element);
+      });
+      targetText.innerHTML = node.innerHTML;
+      generateDiv.style.display = "none";
+      targetDiv.style.display = "block";
+    });
+
+    targetButton.addEventListener("click", () => {
+      generateDiv.style.display = "block";
+      targetDiv.style.display = "none";
+    });
+  </script>
+</html>
