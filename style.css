@@ -19,15 +19,35 @@ body {
   display: none;
 }
 
+#settings {
+  user-select: none;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  display: none;
+  text-align: center;
+}
+
+.settings-item {
+  margin: 10px;
+}
+
 #target-text {
   margin-top: 10px;
   text-align: left;
   padding: 20px 10%;
   margin-bottom: 30px;
-  letter-spacing: 0.08em;
   line-height: 1.5em;
-  font-size: 1.2em;
+  letter-spacing: 0.4px;
+  font-size: 25px;
   word-wrap: break-word;
+
+  @media screen and (max-width: 1000px) {
+    padding: 20px 4%;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 20px 1%;
+  }
 }
 
 .title {
@@ -45,18 +65,31 @@ body {
   font-weight: 350;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
 textarea {
   width: 100%;
   height: calc(100% - 64px);
   background-color: #eee;
   resize: none;
-  font-size: 1em;
+  font-size: 20px;
+  letter-spacing: 0.3px;
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 5px;
   padding: 10px;
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+select {
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  padding: 4px;
 }
 
 button {
@@ -68,7 +101,7 @@ button {
   cursor: pointer;
   margin: 8px 0;
   padding: 16px;
-  font-size: 1em;
+  font-size: 18px;
 }
 
 button:hover {
