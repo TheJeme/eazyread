@@ -33,6 +33,7 @@ body {
   background-color: #fff;
   display: flex;
   justify-content: center;
+  user-select: none;
 }
 
 .title-text-1 {
@@ -58,6 +59,7 @@ textarea {
 }
 
 button {
+  user-select: none;
   color: rgb(0, 0, 0, 0.7);
   background-color: rgba(0, 0, 0, 0.12);
   border: none;
