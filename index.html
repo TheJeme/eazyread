@@ -1,147 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Generate text that is eazily readable" />
-    <meta name="keywords" content="EazyRead, Text, Eazy, Read" />
-    <meta name="author" content="Eemeli Mark" />
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <title>EazyRead</title>
-    <link href="style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="title">
-      <h1 class="title-text-1">EAZY</h1>
-      <h1 class="title-text-2">READ</h1>
-    </div>
-    <div class="main" id="generate">
-      <textarea id="textarea" placeholder="Enter text."></textarea>
-      <button id="generate-button">Generate</button>
-    </div>
-    <div class="main" id="target">
-      <div id="settings">
-        <h2>Settings</h2>
-        <div class="settings-item">
-          <label>Font size</label>
-          <select id="font-size-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3" selected>3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-        <div class="settings-item">
-          <label>Letter spacing</label>
-          <select id="letter-spacing-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3" selected>3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-        <div class="settings-item">
-          <label>Bolding</label>
-          <select id="bolding-select">
-            <option value="1" selected>Enabled</option>
-            <option value="0">Disabled</option>
-          </select>
-        </div>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Generate text that is eazily readable" />
+  <meta name="keywords" content="EazyRead, Text, Eazy, Read" />
+  <meta name="author" content="Eemeli Mark" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?" />
+  <title>EazyRead</title>
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="title">
+    <h1 class="title-text-1">EAZY</h1>
+    <h1 class="title-text-2">READ</h1>
+  </div>
+  <div class="main" id="generate">
+    <textarea id="textarea" placeholder="Enter text."></textarea>
+    <button id="generate-button">Generate</button>
+  </div>
+  <div class="main" id="target">
+    <div id="settings">
+      <h2>Settings</h2>
+      <div class="settings-item">
+        <label>Font size</label>
+        <select id="font-size-select">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
       </div>
-      <div class="buttons">
-        <button id="target-button">Back</button>
-        <button id="settings-button">Settings</button>
+      <div class="settings-item">
+        <label>Letter spacing</label>
+        <select id="letter-spacing-select">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
       </div>
-      <div id="target-text"></div>
+      <div class="settings-item">
+        <label>Bolding</label>
+        <select id="bolding-select">
+          <option value="1" selected>Enabled</option>
+          <option value="0">Disabled</option>
+        </select>
+      </div>
     </div>
-  </body>
+    <div class="buttons">
+      <button id="target-button">Back</button>
+      <button id="settings-button">Settings</button>
+    </div>
+    <div id="target-text"></div>
+  </div>
+</body>
 
-  <script src="html2canvas.min.js"></script>
-  <script src="jspdf.umd.min.js"></script>
-  <script>
-    const textarea = document.getElementById("textarea");
+<script src="html2canvas.min.js"></script>
+<script src="jspdf.umd.min.js"></script>
+<script>
+  const textarea = document.getElementById("textarea");
 
-    const generateButton = document.getElementById("generate-button");
-    const targetButton = document.getElementById("target-button");
-    const settingsButton = document.getElementById("settings-button");
+  const generateButton = document.getElementById("generate-button");
+  const targetButton = document.getElementById("target-button");
+  const settingsButton = document.getElementById("settings-button");
 
-    const fontSizeSelect = document.getElementById("font-size-select");
-    const letterSpacingSelect = document.getElementById(
-      "letter-spacing-select"
-    );
-    const boldingSelect = document.getElementById("bolding-select");
+  const fontSizeSelect = document.getElementById("font-size-select");
+  const letterSpacingSelect = document.getElementById(
+    "letter-spacing-select"
+  );
+  const boldingSelect = document.getElementById("bolding-select");
 
-    const generateDiv = document.getElementById("generate");
-    const targetDiv = document.getElementById("target");
-    const settingsDiv = document.getElementById("settings");
+  const generateDiv = document.getElementById("generate");
+  const targetDiv = document.getElementById("target");
+  const settingsDiv = document.getElementById("settings");
 
-    const targetText = document.getElementById("target-text");
+  const targetText = document.getElementById("target-text");
 
-    generateButton.addEventListener("click", () => {
-      if (textarea.value === "") {
-        return;
-      }
-
-      setBoldingText();
-
-      generateDiv.style.display = "none";
-      targetDiv.style.display = "block";
-    });
-
-    targetButton.addEventListener("click", () => {
-      generateDiv.style.display = "block";
-      targetDiv.style.display = "none";
-    });
-
-    settingsButton.addEventListener("click", () => {
-      if (settingsDiv.style.display === "block") {
-        settingsDiv.style.display = "none";
-      } else {
-        settingsDiv.style.display = "block";
-      }
-    });
-
-    fontSizeSelect.addEventListener("change", () => {
-      targetText.style.fontSize = `${10 + fontSizeSelect.value * 5}px`;
-    });
-
-    letterSpacingSelect.addEventListener("change", () => {
-      targetText.style.letterSpacing = `${
-        letterSpacingSelect.value / 5 - 0.2
-      }px`;
-    });
-
-    boldingSelect.addEventListener("change", () => {
-      if (boldingSelect.value === "1") {
-        setBoldingText();
-      } else {
-        targetText.innerHTML = textarea.value;
-      }
-    });
-
-    function setBoldingText() {
-      targetText.innerHTML = "";
-      const words = textarea.value.split(" ");
-      words.forEach((word) => {
-        const boldCharCount = Math.ceil(word.length / 3);
-        const element = document.createElement("span");
-        element.innerHTML = `<b>${word.slice(0, boldCharCount)}</b>${word.slice(
-          boldCharCount
-        )} `;
-        targetText.appendChild(element);
-      });
+  generateButton.addEventListener("click", () => {
+    if (textarea.value === "") {
+      return;
     }
-  </script>
+
+    setBoldingText();
+
+    generateDiv.style.display = "none";
+    targetDiv.style.display = "block";
+  });
+
+  targetButton.addEventListener("click", () => {
+    generateDiv.style.display = "block";
+    targetDiv.style.display = "none";
+  });
+
+  settingsButton.addEventListener("click", () => {
+    if (settingsDiv.style.display === "block") {
+      settingsDiv.style.display = "none";
+    } else {
+      settingsDiv.style.display = "block";
+    }
+  });
+
+  fontSizeSelect.addEventListener("change", () => {
+    targetText.style.fontSize = `${10 + fontSizeSelect.value * 5}px`;
+  });
+
+  letterSpacingSelect.addEventListener("change", () => {
+    targetText.style.letterSpacing = `${letterSpacingSelect.value / 5 - 0.2
+      }px`;
+  });
+
+  boldingSelect.addEventListener("change", () => {
+    if (boldingSelect.value === "1") {
+      setBoldingText();
+    } else {
+      targetText.innerHTML = textarea.value;
+    }
+  });
+
+  function setBoldingText() {
+    targetText.innerHTML = "";
+    const words = textarea.value.split(" ");
+    words.forEach((word) => {
+      const boldCharCount = Math.ceil(word.length / 3);
+      const element = document.createElement("span");
+      element.innerHTML = `<b>${word.slice(0, boldCharCount)}</b>${word.slice(
+        boldCharCount
+      )} `;
+      targetText.appendChild(element);
+    });
+  }
+</script>
+
 </html>
